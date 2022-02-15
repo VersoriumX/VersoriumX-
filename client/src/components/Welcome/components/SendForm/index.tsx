@@ -10,18 +10,24 @@ interface SendFormProps {
 
 const SendForm: React.FC<SendFormProps> = ({}) => {
 
-  // const {value} = React.useContext(TransactionContext)
+  const {
+    currentAccount,
+    connectWallet,
+    handleChange,
+    sendTransaction,
+    formData,
+    isLoading
+  } = React.useContext(TransactionContext);
 
 
-  const [isLoading, setIsLoading] = React.useState(true);
+  const handleSubmit = (e: React.MouseEvent<HTMLElement>) => {
+    const {addressTo, amount, keyword, message} = formData;
 
+    e.preventDefault();
 
-  const handleChange = () => {
+    if (!addressTo || !amount || !keyword || !message) return;
 
-  }
-
-  const handleSubmit = () => {
-
+    sendTransaction();
   }
 
   return (

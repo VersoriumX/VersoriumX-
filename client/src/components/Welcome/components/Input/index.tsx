@@ -1,5 +1,6 @@
 import * as React from 'react';
 
+
 interface InputProps {
   placeholder: string;
   name: string;
@@ -9,6 +10,7 @@ interface InputProps {
 }
 
 const Input: React.FC<InputProps> = ({placeholder, name, type, value, handleChange}) => {
+
 
   return (
     <input
