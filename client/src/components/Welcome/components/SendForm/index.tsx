@@ -1,12 +1,18 @@
 import * as React from 'react';
-import {Loader} from "../../../index";
+
 import {Input} from "../index";
+import {Loader} from "../../../index";
+import {TransactionContext} from "../../../../context/TransactionContext";
 
 interface SendFormProps {
 
 }
 
 const SendForm: React.FC<SendFormProps> = ({}) => {
+
+  // const {value} = React.useContext(TransactionContext)
+
+
   const [isLoading, setIsLoading] = React.useState(true);
 
 
