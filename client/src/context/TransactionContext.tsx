@@ -135,7 +135,9 @@ const TransactionsProvider: React.FC<TransactionsProviderProps> = ({children}) =
         const transactionsCount = await transactionsContract.getTransactionCount();
 
         // @ts-ignore
-        setTransactionCount(+transactionsCount)
+        setTransactionCount(+transactionsCount);
+
+
       } else {
         console.log("No ethereum object");
       }
