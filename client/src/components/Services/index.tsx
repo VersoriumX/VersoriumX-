@@ -2,6 +2,7 @@ import * as React from 'react';
 import {BsShieldFillCheck} from "react-icons/bs";
 import {BiSearchAlt} from "react-icons/bi";
 import {RiHeart2Fill} from "react-icons/ri";
+
 import ServiceCard from "./components/ServiceCard";
 
 
