@@ -23,7 +23,7 @@ const CryptoCard: React.FC<CryptoCardProps> = ({}) => {
         </div>
         <div>
           <p className="text-white font-light text-sm">
-            {currentAccount ? shortenAddress(currentAccount) : "Connect your account at first"}
+            {currentAccount ? shortenAddress(currentAccount) : "Connect your account first"}
           </p>
           <p className="text-white font-semibold text-lg mt-1">
             Ethereum
