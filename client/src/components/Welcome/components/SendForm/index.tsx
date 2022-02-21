@@ -33,7 +33,7 @@ const SendForm: React.FC<SendFormProps> = ({}) => {
   return (
     <div className="p-5 sm:w-96 w-full flex flex-col justify-start items-center blue-glassmorphism">
       <Input placeholder={t("Address To")} name="addressTo" type="text" handleChange={handleChange}/>
-      <Input placeholder={t("amount")} name="amount" type="number" handleChange={handleChange}/>
+      <Input placeholder={t("amount-eth")} name="amount" type="number" handleChange={handleChange}/>
       <Input placeholder={t("keyword")} name="keyword" type="text" handleChange={handleChange}/>
       <Input placeholder={t("enter-message")} name="message" type="text" handleChange={handleChange}/>
 

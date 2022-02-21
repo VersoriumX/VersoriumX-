@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {useTranslation} from "react-i18next";
 
 import {shortenAddress} from "../../../../utils/shortenAddress";
 import useFetch from "../../../../hooks/useFetch";
@@ -22,6 +23,8 @@ const TransactionCard: React.FC<TransactionCardProps> = ({
                                                            url,
                                                            amount
                                                          }) => {
+  const {t} = useTranslation("translation", {useSuspense: false});
+
   const gifUrl = useFetch({keyword});
   return (
     <div
@@ -36,18 +39,18 @@ const TransactionCard: React.FC<TransactionCardProps> = ({
       <div className="flex flex-col items-center w-full mt-3">
         <div className="flex justify-between w-full mb-6 p-2 flex-wrap">
           <a href={`https://ropsten.etherscan.io/address/${addressFrom}`} target="_blank" rel="noreferrer">
-            <p className="text-white text-base">From: {shortenAddress(addressFrom)}</p>
+            <p className="text-white text-base">{t("from")}: {shortenAddress(addressFrom)}</p>
           </a>
           <a href={`https://ropsten.etherscan.io/address/${addressTo}`} target="_blank" rel="noreferrer">
-            <p className="text-white text-base">To: {shortenAddress(addressTo)}</p>
+            <p className="text-white text-base">{t("to")}: {shortenAddress(addressTo)}</p>
           </a>
 
-          <p className="text-white text-base">Amount {amount} ETH</p>
+          <p className="text-white text-base">{t("amount-eth")}: {amount}</p>
 
           {message && (
             <>
               <br/>
-              <p className="text-white text-base">Message: {message}</p>
+              <p className="text-white text-base">{t("message")}: {message}</p>
             </>
           )}
         </div>
