@@ -1,19 +1,34 @@
 import * as React from 'react';
 import {HiMenuAlt4} from "react-icons/hi";
 import {AiOutlineClose} from "react-icons/ai";
+import i18n from "i18next";
+import {useTranslation} from "react-i18next";
 
 import logo from "../../images/logo.png";
 import NavBarItem from "../NavBarItem";
+import Dropdown from "../Dropdown";
+import {ILang} from "../../models/ILang";
+import langs from "../../utils/langs";
 
 interface NavbarProps {
 
 }
 
-const navbarItems = ["Market", "Exchange", "Tutorials", "Wallets"];
 
 const Navbar: React.FC<NavbarProps> = ({}) => {
+  const {t} = useTranslation("translation", {useSuspense: false});
 
+  const navbarItems = [t("market"), t("exchange"), t("tutorials"), t("wallets")];
   const [toggleMenu, setToggleMenu] = React.useState(false);
+  const [lang, setLang] = React.useState<ILang>(langs[0]);
+
+  const setLanguage = React.useCallback(async (code: string) => {
+    await i18n.changeLanguage(code ?? "ru")
+  }, [lang]);
+
+  React.useEffect(() => {
+    setLanguage(lang.code).then(r => r);
+  }, [lang])
 
   return (
     <nav className="w-full flex md:justify-center justify-between items-center p-4">
@@ -27,7 +42,11 @@ const Navbar: React.FC<NavbarProps> = ({}) => {
         ))}
 
         <li className="py-2 px-7 mx-4 rounded-full transition-all cursor-pointer bg-[#2952e3] hover:bg-[#2546bd]">
-          Login
+          {t("login")}
+        </li>
+
+        <li>
+          <Dropdown items={langs} onSelect={setLang} selected={lang}/>
         </li>
       </ul>
 

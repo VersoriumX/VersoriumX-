@@ -1,12 +1,14 @@
 import * as React from 'react';
-import {ConnectWallet, CryptoCard, GridTable, SendForm} from "./components";
+import {useTranslation} from "react-i18next";
 
+import {ConnectWallet, CryptoCard, GridTable, SendForm} from "./components";
 
 interface WelcomeProps {
 
 }
 
 const Welcome: React.FC<WelcomeProps> = ({}) => {
+  const {t} = useTranslation("translation", {useSuspense: false});
 
   return (
     <div className="flex w-full justify-center items-center">
@@ -14,10 +16,10 @@ const Welcome: React.FC<WelcomeProps> = ({}) => {
         <div className="flex flex-1 justify-start items-start flex-col mf:mr-10">
 
           <h1 className="text-3xl sm:text-5xl text-white text-gradient py-1">
-            Send Crypto <br/> across the world
+            {t('welcome-title-1')} <br/>{t('welcome-title-2')}
           </h1>
           <p className="text-left mt-5 text-white font-light md:w-9/12 w-11/12 text-base">
-            Explore the crypto world. Buy and sell cryptocurrencies easily on Krypto
+            {t('welcome-text')}
           </p>
           <ConnectWallet/>
           <GridTable/>

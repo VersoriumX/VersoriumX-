@@ -1,18 +1,18 @@
 import * as React from 'react';
+import {useTranslation} from "react-i18next";
 
 import {Input} from "../index";
 import {Loader} from "../../../index";
 import {TransactionContext} from "../../../../context/TransactionContext";
+
 
 interface SendFormProps {
 
 }
 
 const SendForm: React.FC<SendFormProps> = ({}) => {
-
+  const {t} = useTranslation("translation", {useSuspense: false});
   const {
-    currentAccount,
-    connectWallet,
     handleChange,
     sendTransaction,
     formData,
@@ -32,10 +32,10 @@ const SendForm: React.FC<SendFormProps> = ({}) => {
 
   return (
     <div className="p-5 sm:w-96 w-full flex flex-col justify-start items-center blue-glassmorphism">
-      <Input placeholder="Address To" name="addressTo" type="text" handleChange={handleChange}/>
-      <Input placeholder="Amount (ETH)" name="amount" type="number" handleChange={handleChange}/>
-      <Input placeholder="Keyword (Gif)" name="keyword" type="text" handleChange={handleChange}/>
-      <Input placeholder="Enter Message" name="message" type="text" handleChange={handleChange}/>
+      <Input placeholder={t("Address To")} name="addressTo" type="text" handleChange={handleChange}/>
+      <Input placeholder={t("amount")} name="amount" type="number" handleChange={handleChange}/>
+      <Input placeholder={t("keyword")} name="keyword" type="text" handleChange={handleChange}/>
+      <Input placeholder={t("enter-message")} name="message" type="text" handleChange={handleChange}/>
 
       <div className="h-[1px] w-full bg-gray-400 my-2"/>
 
@@ -47,7 +47,7 @@ const SendForm: React.FC<SendFormProps> = ({}) => {
             onClick={handleSubmit}
             className="text-white w-full mt-2 border-[1px] p-2 border-[#3d4f7c] hover:bg-[#3d4f7c] rounded-full cursor-pointer"
           >
-            Send now
+            {t("send")}
           </button>
         )}
     </div>

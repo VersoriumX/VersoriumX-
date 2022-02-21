@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {SiEthereum} from "react-icons/si";
 import {BsInfoCircle} from "react-icons/bs";
+import {useTranslation} from "react-i18next";
 
 import {shortenAddress} from "../../../../utils/shortenAddress";
 import {TransactionContext} from "../../../../context/TransactionContext";
@@ -10,7 +11,9 @@ interface CryptoCardProps {
 }
 
 const CryptoCard: React.FC<CryptoCardProps> = ({}) => {
+  const {t} = useTranslation("translation", {useSuspense: false});
   const {currentAccount} = React.useContext(TransactionContext);
+
   return (
     <div
       className="p-3 flex justify-end items-start flex-col rounded-xl h-40 sm:w-72 w-full my-5 eth-card white-glassmorphism">
@@ -23,10 +26,10 @@ const CryptoCard: React.FC<CryptoCardProps> = ({}) => {
         </div>
         <div>
           <p className="text-white font-light text-sm">
-            {currentAccount ? shortenAddress(currentAccount) : "Connect your account first"}
+            {currentAccount ? shortenAddress(currentAccount) : t("connect-first")}
           </p>
           <p className="text-white font-semibold text-lg mt-1">
-            Ethereum
+            {t("ethereum")}
           </p>
         </div>
       </div>
