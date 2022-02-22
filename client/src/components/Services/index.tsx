@@ -3,8 +3,10 @@ import {BsShieldFillCheck} from "react-icons/bs";
 import {BiSearchAlt} from "react-icons/bi";
 import {RiHeart2Fill} from "react-icons/ri";
 import {useTranslation} from "react-i18next";
+import {motion} from "framer-motion";
 
 import ServiceCard from "./components/ServiceCard";
+import {leftAnimation, rightAnimation} from "../../utils/animations";
 
 
 interface ServicesProps {
@@ -17,7 +19,12 @@ const Services: React.FC<ServicesProps> = ({}) => {
   return (
     <div className="flex w-full justify-center items-center gradient-bg-services">
       <div className="flex mf:flex-row flex-col items-center justify-between md:p-20 py-12 px-4">
-        <div className="flex-1 flex flex-col justify-start items-start">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          variants={rightAnimation}
+          viewport={{once: true}}
+          className="flex-1 flex flex-col justify-start items-start">
           <h1 className="text-white text-3xl sm:text-5xl py-2 text-gradient">
             {t("services-title-1")}
             <br/>
@@ -28,8 +35,14 @@ const Services: React.FC<ServicesProps> = ({}) => {
           </p>
 
           <a href="#" className="text-left my-2 text-blue-600 md:w-9/12 w-11/12 text-base">{t("start-link")}</a>
-        </div>
-        <div className="flex-1 flex flex-col justify-start items-center">
+        </motion.div>
+
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          variants={leftAnimation}
+          viewport={{once: true}}
+          className="flex-1 flex flex-col justify-start items-center">
           <ServiceCard
             color="bg-[#2952E3]"
             title={t("security-guarantee")}
@@ -48,7 +61,7 @@ const Services: React.FC<ServicesProps> = ({}) => {
             icon={<RiHeart2Fill fontSize={21} className="text-white"/>}
             subtitle={t("service-card-subtitle")}
           />
-        </div>
+        </motion.div>
 
       </div>
     </div>

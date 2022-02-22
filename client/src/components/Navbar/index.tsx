@@ -3,12 +3,16 @@ import {HiMenuAlt4} from "react-icons/hi";
 import {AiOutlineClose} from "react-icons/ai";
 import i18n from "i18next";
 import {useTranslation} from "react-i18next";
+import {motion} from "framer-motion";
+import {MdOutlineLogin} from "react-icons/md";
 
 import logo from "../../images/logo.png";
 import NavBarItem from "../NavBarItem";
 import Dropdown from "../Dropdown";
 import {ILang} from "../../models/ILang";
 import langs from "../../utils/langs";
+import {scaleAnimation} from "../../utils/animations";
+
 
 interface NavbarProps {
 
@@ -41,9 +45,14 @@ const Navbar: React.FC<NavbarProps> = ({}) => {
           <NavBarItem key={item + index} title={item}/>
         ))}
 
-        <li className="py-2 px-7 mx-4 rounded-full transition-all cursor-pointer bg-[#2952e3] hover:bg-[#2546bd]">
+        <motion.li initial="initial" whileHover="hover" whileTap="tap"
+                   className="py-2 px-5 mx-4 flex items-center rounded-full transition-all cursor-pointer bg-[#2952e3] hover:bg-[#2546bd]"
+        >
+          <motion.span variants={scaleAnimation}>
+            <MdOutlineLogin fontSize={18} className="text-white mr-2"/>
+          </motion.span>
           {t("login")}
-        </li>
+        </motion.li>
 
         <li>
           <Dropdown items={langs} onSelect={setLang} selected={lang}/>

@@ -1,8 +1,10 @@
 import * as React from 'react';
 import {useTranslation} from "react-i18next";
+import {motion} from "framer-motion";
 
 import {shortenAddress} from "../../../../utils/shortenAddress";
 import useFetch from "../../../../hooks/useFetch";
+import {fadeIn} from "../../../../utils/animations";
 
 interface TransactionCardProps {
   addressTo: string;
@@ -27,7 +29,11 @@ const TransactionCard: React.FC<TransactionCardProps> = ({
 
   const gifUrl = useFetch({keyword});
   return (
-    <div
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      variants={fadeIn}
+      viewport={{once: true}}
       className="bg-[#181918] m-4 flex
         flex-1 2xl:min-w-[450px]
         2xl:max-w-[500px]
@@ -65,8 +71,9 @@ const TransactionCard: React.FC<TransactionCardProps> = ({
           <p className="text-[#37c7da] font-bold">{timestamp}</p>
         </div>
       </div>
-    </div>
+    </motion.div>
   )
 };
+
 
 export default React.memo<TransactionCardProps>(TransactionCard);

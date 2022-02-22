@@ -1,9 +1,10 @@
-import * as React from 'react'
-import {Menu, Transition} from '@headlessui/react'
-import {ChevronDownIcon} from '@heroicons/react/solid'
+import * as React from 'react';
+import {Menu, Transition} from '@headlessui/react';
+import {ChevronDownIcon} from '@heroicons/react/solid';
+
 import {ILang} from "../../models/ILang";
 
-const classNames: (cl_1: string, cl_2: string) => string = (...classes) => {
+const classNames = (...classes: string[]) => {
   return classes.filter(Boolean).join(' ')
 }
 
@@ -28,10 +29,10 @@ const Dropdown: React.FC<DropdownProps<ILang>> = ({items, onSelect, selected}) =
 
       <Transition
         as={React.Fragment}
-        enter="transition ease-out duration-100"
+        enter="transition ease-out duration-200"
         enterFrom="transform opacity-0 scale-95"
         enterTo="transform opacity-100 scale-100"
-        leave="transition ease-in duration-75"
+        leave="transition ease-in duration-100"
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
@@ -39,11 +40,13 @@ const Dropdown: React.FC<DropdownProps<ILang>> = ({items, onSelect, selected}) =
           className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-gray-800 ring-1 ring-black ring-opacity-5 divide-y divide-gray-700 focus:outline-none">
           <div className="py-1">
             {items.map((item) => (
-              <Menu.Item key={item.name} onClick={() => onSelect(item)}>
+              <Menu.Item key={item.name} onClick={() => onSelect(item)}
+                         disabled={item.code === "es" || item.code === "fr"}>
                 <a
                   href="#"
                   className={classNames(
                     item.code === selected.code ? 'bg-gray-900 text-gray-100' : 'text-gray-100',
+                    (item.code === "es" || item.code === "fr") ? "cursor-not-allowed bg-gray-700 text-gray-200" : "",
                     'block px-4 py-2 text-sm'
                   )}
                 >

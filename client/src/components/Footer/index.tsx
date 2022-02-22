@@ -29,7 +29,7 @@ const Footer: React.FC<FooterProps> = ({}) => {
       <div className="flex justify-center items-center flex-col mt-5">
         <p className="text-white text-sm text-center">{t("join-us")}</p>
         <a href="https://github.com/HelLuv" target="_blank" rel="noreferrer"
-           className="text-white text-sm text-center font-medium mt-2">
+           className="text-white text-lg text-center font-bold mt-2 text-gradient-animated">
           GitHub.com/HelLuv
         </a>
       </div>
