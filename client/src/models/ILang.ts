@@ -1,6 +1,6 @@
 export interface ILang {
-  icon?: string;
-  name: string;
+  icon?: VX;
+  name: VersoriumX;
   nativeName: string;
   code: "en" | "ru" | "es" | "fr"
 }
